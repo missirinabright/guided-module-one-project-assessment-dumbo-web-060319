@@ -1,0 +1,50 @@
+Notes:
+0. change how to access for finding the kid
+2. bonus via select name
+then map
+3. practice talking about my code with mod2
+talk to me about how the method is working
+
+change the limit to be shown on the page
+command line text pictures
+Latest as of Tue :
+BONUS
+do a find by a child to see their specific chores
+
+3 Models:
+
+Model 1
+Adults who have many Children through the Household Chores
+Mom
+Dad
+Babushka
+Ded
+Aunt Lydia
+
+Model 2
+Children who have many Adults through the Household Chores
+
+Model 3
+Household Chores belong to Adults and to Children
+
+Sections (models)
+FarmChores
+Feed the cows
+Clean the cowpoop
+Feed the geeze
+Feed the chickens
+
+GardenChores
+Pull the weeds
+Water tomatoes
+
+KitchenChores
+Cook borsht
+Wash dishes
+
+KindergartenChores
+Bathe toddlers
+Supervise toddlers
+
+User_story
+"As a <role>, I want <goal/desire> so that <benefit>.".
