@@ -17,8 +17,8 @@ class CLI
     space
     puts "Regenerative Village Life!"
     space
-    puts "🥵🥵🥵     🥵🥵     🥵🥵🥵"
-    puts "🥬"
+    puts "🥵 🥵 🥵 🥵 🥵 🥵 🥵 🥵"
+    puts "🥬 🥬 🥬 🥬 🥬 🥬 🥬 🥬"
     sleep 2
     main_menu
   end
@@ -40,7 +40,7 @@ class CLI
       menu.choice "🍠 update a kid's portfolio", -> { u_update_kid }
       menu.choice "🍐 update a farm chore", -> { u_update_famchore } ##
       menu.choice "🤸‍♀️ send a kid to Disney Land", -> { d_delete_kid }
-      menu.choice "🤹‍♀️ layoff an adult", -> { d_delete_adult }
+      menu.choice "🤹‍♀️ retire an adult", -> { d_delete_adult }
       menu.choice "🚜 outsource a farm chore assignment", -> { d_delete_farmchore }
       menu.choice "QUIT✌️"
     end
@@ -111,6 +111,18 @@ class CLI
     back_button
   end
 
+  def r_assigned_chores
+    system 'clear'
+    puts "We are so proud to present..."
+    space
+    Farmchore.all.each do |chore|
+      puts "#{chore.adult.name} has assigned #{chore.child.name} a task to #{chore.description}!"
+      # binding.pry
+      sleep 1
+    end
+    back_button
+  end
+
   def c_create_farmchore
     system 'clear'
     chosen_adult = @prompt.select("Which adult?", Adult.adult_hash)
@@ -126,16 +138,7 @@ class CLI
     main_menu
   end
 
-  def r_assigned_chores
-    system 'clear'
-    puts "We are so proud to present..."
-    space
-    Farmchore.all.each do |chore|
-      puts "#{chore.adult.name} has assigned #{chore.child.name} a task to #{chore.description}!"
-      sleep 1
-    end
-    back_button
-  end
+
 
   def r_find_a_kid
     system 'clear'
@@ -174,11 +177,6 @@ class CLI
       end
       back_button
     end
-
-    # Farmchore.create(description: @farmchore_description, adult_id: chosen_adult.id, child_id: chosen_child.id)
-    # puts "#{chosen_adult.name} has created the #{@farmchore_description} for #{chosen_child.name}!"
-    # # back_button
-
 
   def u_update_kid
     system 'clear'

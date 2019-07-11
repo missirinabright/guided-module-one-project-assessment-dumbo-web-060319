@@ -2,7 +2,7 @@ Adult.destroy_all
 Child.destroy_all
 Farmchore.destroy_all
 
-mom = Adult.create(name: "🧚‍♀️Mom")
+mom = Adult.create(name: "🧚‍♀️ Mom")
 dad = Adult.create(name: "👨‍🌾 Dad")
 grandma = Adult.create(name: "👵 Babushka")
 grandpa = Adult.create(name: "🎅 Ded")
