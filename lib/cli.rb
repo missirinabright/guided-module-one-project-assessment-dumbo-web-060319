@@ -9,7 +9,28 @@ class CLI
     puts "               "
   end
 
+  def cow
+    pid = fork{ exec 'afplay', 'lib/cow.mp3' }
+  end
+
+  def goat
+    pid = fork{ exec 'afplay', 'lib/goat.mp3' }
+  end
+
+  def birds
+    pid = fork{ exec 'afplay', 'lib/birds.mp3' }
+  end
+
+  def village
+    pid = fork{ exec 'afplay', 'lib/village.mp3' }
+  end
+
+  def stop_music
+    pid = fork{ exec 'killall', 'afplay' }
+  end
+
   def greet
+    cow
     system "clear"
     puts "Welcome"
     space
@@ -25,6 +46,7 @@ class CLI
 
   def main_menu
     system 'clear'
+    birds
     @prompt.select("What would you like to do?") do |menu|
       menu.per_page 20
       menu.choice "QUIT✌️"
@@ -42,6 +64,7 @@ class CLI
       menu.choice "🤸‍♀️ send a kid to Disney Land", -> { d_delete_kid }
       menu.choice "🤹‍♀️ retire an adult", -> { d_delete_adult }
       menu.choice "🚜 outsource a farm chore assignment", -> { d_delete_farmchore }
+      menu.choice "🤫 quiet, please", -> { stop_music }
       menu.choice "QUIT✌️"
     end
   end
@@ -63,6 +86,7 @@ class CLI
   def c_create_adult
     system 'clear'
     puts "Enter your name, adult"
+    goat
     space
     @adult_name = gets.chomp
     @adult = Adult.create(name: @adult_name)
@@ -99,6 +123,7 @@ class CLI
   end
 
   def r_see_the_farmchores
+    village
     system 'clear'
     puts "Today, we need you to ..."
     space
@@ -232,8 +257,9 @@ class CLI
     system 'clear'
     @prompt.select("Which farm chore assignment do you want to delete?") do |menu|
       Farmchore.all.each do |farmchore|
-        menu.choice farmchore.description, -> { farmchore.destroy; main_menu}
+        menu.choice farmchore.description, -> { farmchore.destroy}
       end
     end
+    r_see_the_farmchores
   end
 end
